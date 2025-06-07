@@ -519,7 +519,7 @@ public struct IndirectDrawCommand
 	public uint NumVertices;
 	public uint NumInstances;
 	public uint FirstVertex;
-	public uint FirstIndex;
+	public uint FirstInstance;
 }
 
 [StructLayout(LayoutKind.Sequential)]
@@ -1668,6 +1668,30 @@ internal static partial class IRO
 		Span<Color> data,
 		uint w,
 		uint h
+	);
+
+	[LibraryImport(nativeLibName)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial IntPtr IRO_Compress(
+		IntPtr data,
+		uint dataLength,
+		int compressionLevel,
+		out uint outLength
+	);
+
+	[LibraryImport(nativeLibName)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial SDLBool IRO_Decompress(
+		IntPtr encodedBuffer,
+		IntPtr decodedBuffer,
+		uint encodedLength,
+		uint decodedLength
+	);
+
+	[LibraryImport(nativeLibName)]
+	[UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+	public static partial void IRO_FreeBuffer(
+		IntPtr buffer
 	);
 }
 
