@@ -20,6 +20,7 @@ namespace MoonWorks
 		/// <summary>
 		/// The game will render at the maximum possible framerate that the computing resources allow. <br/>
 		/// Note that this may lead to overheating, resource starvation, etc. <br/>
+		/// It also uses more of the CPU, since the main thread won't be set to sleep until the next fixed update. <br/>
 		/// If the GraphicsDevice.PresentMode is set to VSYNC, the framerate will be limited by the monitor refresh rate.
 		/// </summary>
 		Uncapped
